@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(145deg, #1f1f1f, #2c2c2c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
+  transition: background 0.4s ease-in-out;
+}
+
+/* Game Container */
+.game-container {
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  padding: 30px 20px;
+  max-width: 420px;
+  width: 90%;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+/* Title */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+/* Game Board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+/* Cell Styling */
+.cell {
+  width: 100px;
+  height: 100px;
+  background: #161616;
+  border-radius: 12px;
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #00e5ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 2px 2px 5px #0e0e0e, inset -2px -2px 5px #202020;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.cell:hover {
+  background: #1e1e1e;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+.cell.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Status Text */
+#statusText {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: #aaa;
+  text-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+
+/* Restart Button */
+#restartBtn {
+  padding: 12px 28px;
+  background: #00bcd4;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 188, 212, 0.4);
+  transition: all 0.3s ease;
+}
+
+#restartBtn:hover {
+  background: #0097a7;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(0, 188, 212, 0.5);
+}
+
+/* Theme Utilities */
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.lighttheme {
+  background: linear-gradient(145deg, #e0eafc, #cfdef3);
+  color: #000;
+}
+
+.lighttheme .game-container {
+  background: rgba(255, 255, 255, 0.85);
+  color: #000;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.lighttheme .cell {
+  background: #f1f1f1;
+  color: #0074a1;
+  box-shadow: inset 1px 1px 4px #ccc, inset -1px -1px 4px #fff;
+}
+
+.lighttheme #restartBtn {
+  background: #008cba;
+  box-shadow: 0 6px 18px rgba(0, 140, 186, 0.3);
+}
+
+.lighttheme #restartBtn:hover {
+  background: #006b92;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .cell {
+    width: 80px;
+    height: 80px;
+    font-size: 2.2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .game-container {
+    padding: 20px 15px;
+  }
+
+  #restartBtn {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+}
