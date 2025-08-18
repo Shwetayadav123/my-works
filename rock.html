@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="/rock.css">
+</head>
+
+<body>
+    <div class="rps-container">
+        <h1>Rock Paper Scissors</h1>
+        <div class="scoreboard">
+            <div>
+                <h2>You</h2>
+                <span id="user-score">0</span>
+            </div>
+            <div>
+                <h2>Computer</h2>
+                <span id="comp-score">0</span>
+            </div>
+        </div>
+        <div class="choices">
+            <button class="choice" data-choice="rock" id="rock">
+                <img src="https://img.icons8.com/emoji/96/rock-emoji.png" alt="Rock">
+                <span>Rock</span>
+            </button>
+            <button class="choice" data-choice="paper" id="paper">
+                <img src="https://img.icons8.com/emoji/96/page-facing-up.png" alt="Paper">
+                <span>Paper</span>
+            </button>
+            <button class="choice" data-choice="scissors" id="scissors">
+                <img src="https://img.icons8.com/emoji/96/scissors-emoji.png" alt="Scissors">
+                <span>Scissors</span>
+            </button>
+        </div>
+        <div class="result">
+            <button id="result-text">Make your move!</button>
+
+        </div>
+    </div>
+    <script src="/rock.js"></script>
+</body>
+
+</html>
