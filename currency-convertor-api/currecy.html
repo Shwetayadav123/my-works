@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>      * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .converter {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .converter h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .amount-input {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .amount-input input {
+            padding: 0.7rem;
+            font-size: 1rem;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        select {
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        .flag {
+            font-size: 1.5rem;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #444;
+        }
+
+        .convert-btn {
+            display: block;
+            width: 100%;
+            padding: 0.7rem;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .result {
+            margin-top: 1rem;
+            font-weight: bold;
+            color: #2e7d32;
+            text-align: center;
+            font-size: 1.2rem;
+        }</style>
+     
+</head>
+
+<body>
+    <div class="converter">
+        <h2>Currency Converter</h2>
+
+        <!-- Amount Input -->
+        <div class="amount-input">
+            <input type="number" id="amount" placeholder="Enter amount" />
+        </div>
+
+        <!-- From/To and Flags -->
+        <div class="row">
+            <!-- From -->
+            <img src="https://flagsapi.com/US/flat/64.png" class="flag fi fi-us" id="from-flag"></img>
+            <select id="from" class="dropdown">
+
+            </select>
+
+            <!-- Swap -->
+            <button class="icon-btn" onclick="swapCurrencies()">
+                <i class="fas fa-exchange-alt"></i>
+            </button>
+
+            <!-- To -->
+            <img src="https://flagsapi.com/IN/flat/64.png" class="flag fi fi-in" id="to-flag"></img>
+            <select id="to" class="dropdown">
+
+            </select>
+        </div>
+
+        <!-- Convert Button -->
+        <button class="convert-btn">Convert</button>
+
+        <!-- Result -->
+        <div class="result" id="result">Converted amount will appear here</div>
+    </div>
+    <script src="/code.js"></script>
+    <script>
+        const button = document.querySelector(".convert-btn");
+        const from = document.querySelector('#from');
+        const to = document.querySelector('#to');
+        const msg = document.querySelector("#result")
+        const baseur = 'https://api.frankfurter.app/latest?amount=100&from=USD&to=INR'
+        const dropdown = document.querySelectorAll('.dropdown');
+        for (let select of dropdown) {
+            for (currcode in countrylist) {
+                // console.log(currcode);
+
+                let newoption = document.createElement("option");
+                newoption.innerHTML = currcode;
+                newoption.value = currcode;
+                if (select.id === "from" && currcode === "USD") {
+                    newoption.selected = "selected";
+                }
+                else if (select.id === "to" && currcode === "INR") {
+                    newoption.selected = "selected";
+                }
+                select.append(newoption);
+            }
+            select.addEventListener("change", (evt) => {
+                // console.log(evt.target);
+                Updateflag(evt.target);
+            });
+        }
+
+        const Updateflag = (element) => {
+            let currcode = element.value;
+            let countryCode = countrylist[currcode]?.toUpperCase(); // optional chaining to prevent errors
+
+            if (!countryCode) return;
+
+            let newsrc = `https://flagsapi.com/${countryCode}/flat/64.png`;
+
+            // Detect if 'from' or 'to' select triggered the event
+            if (element.id === "from") {
+                document.getElementById("from-flag").src = newsrc;
+            } else if (element.id === "to") {
+                document.getElementById("to-flag").src = newsrc;
+            }
+        };
+        button.addEventListener("click", async (evt) => {
+            evt.preventDefault();
+            let amount = document.querySelector("#amount");
+            let amt = amount.value
+            console.log(amt);
+            if (amt === "" || amt < 1) {
+                amt = 1;
+                amount.value = "1";
+            }
+            // console.log(from.value);
+            const url = `https://api.frankfurter.app/latest?amount=${amt}&from=${from.value}&to=${to.value}`;
+            let respose = await fetch(url);
+            let data = await respose.json();
+            let rate = data.rates[to.value];
+            console.log(rate);
+            let finalamount = amount * rate;
+            msg.innerHTML = `${amt}${from.value}=${rate}${to.value}`
+        });
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
