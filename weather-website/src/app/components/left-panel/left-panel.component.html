@@ -1,0 +1,42 @@
+<div class="left-panel">
+  <div class="uppar-part">
+  <div class="search-icon" (click)="onsearch(location.value)">
+    <i class="fa-solid fa-magnifying-glass fa-xs"></i>
+  </div>
+  <div class="search-input" >
+    <input type="text" placeholder="Search for places..." #location (keyup.Enter)="onsearch(location.value)" >
+  </div>
+  <div class="location-icon" (click)="onsearch(location.value)">
+    <i class="fa-solid fa-location-dot fa-xs"></i>
+  </div>
+  </div>
+  <div class="bottom-part">
+ <div class="temp-date">
+  <div class="left-container-temp-img"><img src={{this.wearther.tempraturedata.summaryimage}} alt="summaryimage"></div>
+  <div class="left-container-temp-value">{{this.wearther.celcius==true?this.wearther.tempraturedata.temp:this.wearther.celciustoFahrenheit(this.wearther.tempraturedata.temp)}}<sup>{{this.wearther.celcius==true?'°C':'°F'}}</sup></div>
+  <div class="left-container-daytime">{{this.wearther.tempraturedata.day}}, <span class="time">{{this.wearther.tempraturedata.time}}</span></div>
+ </div>
+ <div class="dividing-line"></div>
+ <div class="temp-summary other-details">
+  <div class="container-temp-summary">
+   <div class="left-conatiner-temp-summary-img">
+    <i class="fa-solid fa-cloud fa-xs" style="    color: #71bbf7;"></i>
+    </div>
+
+    <div class="left-cont-tem-summary-value">{{this.wearther.tempraturedata.summaryphase}}</div>
+  </div>
+  <div class="left-container-rain-stats">
+     <div class="left-container-rain-stats-img">
+        <i class="fa-solid  fa-cloud-showers-heavy fa-xs" style="color: #1474c5;"></i>
+     </div>
+     <div class="left-cont-rain-stats-value">Rain - {{this.wearther.tempraturedata.rainper}}%</div>
+  </div>
+  <div class="left-container-location-details">
+    <div class="left-container-location-img">
+      <img src="./../../../assets/raining-image.jpeg" alt="">
+    </div>
+    <div class="left-container-location-name">{{this.wearther.tempraturedata.location}}</div>
+  </div>
+ </div>
+  </div>
+  </div>

@@ -1,0 +1,273 @@
+.right-panel {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: small;
+  font-weight: bold;
+}
+.top-tabs {
+  flex: 2;
+  flex-direction: row;
+  display: flex;
+  margin-left: 30px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.right-top {
+  margin-top: 10px;
+}
+.left-top {
+  display: flex;
+  flex-direction: row;
+  margin-right: 30px;
+  margin-top: 10px;
+}
+.bottom-tabs {
+  flex: 12;
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+.right-container-week-card {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  width: 75px;
+  height: 95px;
+  background-color: white;
+  border-radius: 10px;
+  margin-left: 5px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 500;
+  font-size: x-small;
+}
+.cardday,
+.card-temp-value {
+  margin: 5px;
+}
+.card-temp img {
+  width: 40px;
+  height: 40px;
+}
+
+.today {
+  margin-right: 15px;
+  color: #c5c5c5;
+}
+
+.underline {
+  width: 47px;
+  height: 1.7px;
+  background-color: #1a1a1a;
+  margin-top: 0.5rem;
+}
+.underline-today {
+  transform: translate3d(-10%, 0, 0);
+  transition: 100ms;
+}
+.underline-week {
+  transform: translate3d(90%, 0, 0);
+  transition: 100ms;
+}
+.week {
+  color: #c5c5c5;
+}
+.today:hover,
+.week:hover,
+.today.active,
+.week.active {
+  color: #1a1a1a;
+  cursor: pointer;
+}
+.celsius,
+.fehrenheit {
+  border-radius: 500px;
+  padding: 9px 12px 5px 7px;
+  color: black;
+  background-color: white;
+  font-size: small;
+  cursor: pointer;
+}
+.fehrenheit {
+  margin: 0px 15px 0px 10px;
+}
+.celsius.active,
+.fehrenheit.active,
+.celsius:hover,
+.fehrenheit:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+}
+.profileimage img {
+  width: 30px;
+  height: 30px;
+}
+.container-today-hightlight {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+.container-today-hightlight-card{
+display: flex;
+flex: 8;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+display: grid;
+grid-template-columns: auto auto auto;
+gap: 10px;
+    margin-bottom: 28px;
+
+}
+
+.container-today-hightlight-title{
+flex: 2;
+margin-top:20px;
+ /* margin-bottom: -20px; */
+font-size: small;
+font-weight: bold;
+
+}
+.container-today-hightlight-card-selction{
+display: flex;
+flex-direction: column;
+background-color: white;
+border-radius: 10px;
+width: 180px;
+height: 130px;
+justify-content: center;
+align-items: center;
+text-align: center;
+
+}
+.gauge{
+
+  flex: 2;
+  width: 70%;
+  max-width: 100px;
+  font-size: 32px;
+  color: #004033;
+  font-weight: 500;
+  margin-bottom: -20px;
+  margin-top: -20px;
+}
+.gaude-body{
+  width: 100%;
+  height: 0;
+  padding-bottom: 50%;
+  background: #f1f3f4;
+  position: relative;
+  border-top-left-radius: 100% 200%;
+  border-top-right-radius: 100% 200%;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+.gauge-fill{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: inherit;
+  height: 100%;
+  background-color: #ffbf5e;
+  transform-origin: center top;
+  transform: rotate(0.25turn);
+  transition: transform 0.2s ease-out;
+}
+.gauge-cover{
+  width: 75%;
+  height: 150%;
+  background-color: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top:25%;
+  left:50%;
+  transform:translatex(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 25%;
+  box-sizing: border-box;
+  color: #ffffff;
+}
+.card-title{
+  flex: 1;
+  color: #968b8b;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 14px;
+  align-self: self-start;
+margin-left: 20px;
+}
+
+.hightlight-value{
+  flex: 1;
+  font-size: xx-large;
+  font-weight: 500;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+.windsppedvalue{
+  flex: 2;
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  /* margin-top: -10px; */
+}
+.windstatusimg{
+  flex: 1;
+align-self: self-start;
+margin-left: 30px;
+}
+.windmeasure{
+  font-size: 16px;
+
+}
+.windstatusimg img{
+ width: 20px;
+ height: 20px;
+}
+.sunrise-sunset-value{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+      margin-top: 11px;
+}
+.sunrise,.sunset{
+flex: 1;
+margin-right: 10px;
+display: flex;
+display: flex;
+gap: 12px;
+}
+.sunrise-img,.sunset-img{
+  flex: 1;
+}
+.sunrise-time,.sunset-time{
+  flex: 4;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex
+;
+}
+.sunrise-img img,.sunset-img img{
+  height: 35px;
+  width: 35px;
+  align-self: center;
+}
+.humadity-summary{
+  font-size: small;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
